@@ -13,6 +13,8 @@ JOKE = "My AI coding agent fixed my bug, then asked for hazard pay \u2014 appare
 
 
 def main():
+    if not 1 <= len(JOKE) <= 280 or not JOKE.strip():
+        raise ValueError("joke must be 1 to 280 characters, not only whitespace")
     out = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     out.mkdir(parents=True, exist_ok=True)
     (out / "entry.txt").write_text(JOKE, encoding="utf-8")
